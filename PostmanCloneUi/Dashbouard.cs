@@ -1,8 +1,8 @@
 namespace PostmanCloneUi
 {
-    public partial class Form1 : Form
+    public partial class Dashbouard : Form
     {
-        public Form1()
+        public Dashbouard()
         {
             InitializeComponent();
         }
