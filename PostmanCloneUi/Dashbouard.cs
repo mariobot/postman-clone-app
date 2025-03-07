@@ -1,13 +1,17 @@
+using PostmanCloneLibrary;
+
 namespace PostmanCloneUi;
 
 public partial class Dashbouard : Form
 {
+    private readonly ApiAccess api = new();
+
     public Dashbouard()
     {
         InitializeComponent();
     }
 
-    private async void callApi_Click(object sender, EventArgs e)
+    private async void callApi_ClickAsync(object sender, EventArgs e)
     {
         // Validate the API URL
 
@@ -16,7 +20,7 @@ public partial class Dashbouard : Form
         {
             systemStatus.Text = "Calling API...";
 
-            await Task.Delay(2000);
+            resultsText.Text = await api.CallApi(apiText.Text);
 
             systemStatus.Text = "Ready";
         }

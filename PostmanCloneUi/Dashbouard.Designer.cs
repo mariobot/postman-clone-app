@@ -74,7 +74,7 @@ partial class Dashbouard
         callApi.TabIndex = 3;
         callApi.Text = "Go";
         callApi.UseVisualStyleBackColor = true;
-        callApi.Click += callApi_Click;
+        callApi.Click += callApi_ClickAsync;
         // 
         // resultsText
         // 
