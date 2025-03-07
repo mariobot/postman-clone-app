@@ -1,9 +1,8 @@
-﻿using System.ComponentModel;
-using System.Text.Json;
+﻿using System.Text.Json;
 
 namespace PostmanCloneLibrary;
 
-public class ApiAccess
+public class ApiAccess : IApiAccess
 {
     private readonly HttpClient client = new();
 
@@ -19,7 +18,7 @@ public class ApiAccess
             {
                 var jsonElement = JsonSerializer.Deserialize<JsonElement>(json);
                 json = JsonSerializer.Serialize(jsonElement, new JsonSerializerOptions { WriteIndented = true });
-            }            
+            }
 
             return json;
         }
@@ -34,9 +33,9 @@ public class ApiAccess
         if (string.IsNullOrWhiteSpace(url))
         {
             return false;
-        }        
+        }
 
-        bool output = Uri.TryCreate(url, UriKind.Absolute, out Uri uriOutput) && (uriOutput.Scheme == Uri.UriSchemeHttps);
+        bool output = Uri.TryCreate(url, UriKind.Absolute, out Uri? uriOutput) && (uriOutput?.Scheme == Uri.UriSchemeHttps);
 
         return output;
     }

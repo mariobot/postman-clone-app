@@ -4,7 +4,7 @@ namespace PostmanCloneUi;
 
 public partial class Dashbouard : Form
 {
-    private readonly ApiAccess api = new();
+    private readonly IApiAccess api = new ApiAccess();
 
     public Dashbouard()
     {
@@ -26,10 +26,7 @@ public partial class Dashbouard : Form
 
         try
         {
-            
-
             resultsText.Text = await api.CallApi(apiText.Text);
-
             systemStatus.Text = "Ready";
         }
         catch (Exception ex)
