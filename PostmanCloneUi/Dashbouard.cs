@@ -13,12 +13,20 @@ public partial class Dashbouard : Form
 
     private async void callApi_ClickAsync(object sender, EventArgs e)
     {
+        systemStatus.Text = "Calling API...";
+        resultsText.Text = string.Empty;
+
         // Validate the API URL
 
+        if (!api.IsValidUrl(apiText.Text))
+        {
+            systemStatus.Text = "Invalid URL";
+            return;
+        }
 
         try
         {
-            systemStatus.Text = "Calling API...";
+            
 
             resultsText.Text = await api.CallApi(apiText.Text);
 

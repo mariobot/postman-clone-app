@@ -1,4 +1,5 @@
-﻿using System.Text.Json;
+﻿using System.ComponentModel;
+using System.Text.Json;
 
 namespace PostmanCloneLibrary;
 
@@ -26,5 +27,17 @@ public class ApiAccess
         {
             return $"Error: " + response.StatusCode;
         }
+    }
+
+    public bool IsValidUrl(string url)
+    {
+        if (string.IsNullOrWhiteSpace(url))
+        {
+            return false;
+        }        
+
+        bool output = Uri.TryCreate(url, UriKind.Absolute, out Uri uriOutput) && (uriOutput.Scheme == Uri.UriSchemeHttps);
+
+        return output;
     }
 }
