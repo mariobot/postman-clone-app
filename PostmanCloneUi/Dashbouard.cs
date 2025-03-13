@@ -25,10 +25,19 @@ public partial class Dashbouard : Form
             return;
         }
 
+        HttpAction action;
+
+        if (Enum.TryParse(httpSelection.SelectedItem!.ToString(), out action) == false)
+        {
+            systemStatus.Text = "Invalid HTTP Verb";
+            return;
+        }
+
         try
         {
-            resultsText.Text = await api.CallApi(apiText.Text);
+            resultsText.Text = await api.CallApiAsync(apiText.Text, textBody.Text, action, true);
             callData.SelectedTab = resultsTab;
+            resultsTab.Focus();
 
             systemStatus.Text = "Ready";
         }
