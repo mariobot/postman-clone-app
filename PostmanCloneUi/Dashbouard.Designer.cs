@@ -35,8 +35,15 @@ partial class Dashbouard
         resultsText = new TextBox();
         statusStrip1 = new StatusStrip();
         systemStatus = new ToolStripStatusLabel();
-        resultsLablel = new Label();
+        httpSelection = new ComboBox();
+        callData = new TabControl();
+        bodyTab = new TabPage();
+        textBody = new TextBox();
+        resultsTab = new TabPage();
         statusStrip1.SuspendLayout();
+        callData.SuspendLayout();
+        bodyTab.SuspendLayout();
+        resultsTab.SuspendLayout();
         SuspendLayout();
         // 
         // formHeader
@@ -45,14 +52,14 @@ partial class Dashbouard
         formHeader.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
         formHeader.Location = new Point(25, 24);
         formHeader.Name = "formHeader";
-        formHeader.Size = new Size(275, 47);
+        formHeader.Size = new Size(254, 47);
         formHeader.TabIndex = 0;
-        formHeader.Text = "Postman Clonoe";
+        formHeader.Text = "Postman Clone";
         // 
         // apiLabel
         // 
         apiLabel.AutoSize = true;
-        apiLabel.Location = new Point(25, 93);
+        apiLabel.Location = new Point(25, 96);
         apiLabel.Name = "apiLabel";
         apiLabel.Size = new Size(53, 32);
         apiLabel.TabIndex = 1;
@@ -61,9 +68,9 @@ partial class Dashbouard
         // apiText
         // 
         apiText.BorderStyle = BorderStyle.FixedSingle;
-        apiText.Location = new Point(77, 93);
+        apiText.Location = new Point(200, 93);
         apiText.Name = "apiText";
-        apiText.Size = new Size(571, 39);
+        apiText.Size = new Size(448, 39);
         apiText.TabIndex = 2;
         // 
         // callApi
@@ -80,19 +87,20 @@ partial class Dashbouard
         // 
         resultsText.BackColor = Color.White;
         resultsText.BorderStyle = BorderStyle.FixedSingle;
-        resultsText.Location = new Point(25, 214);
+        resultsText.Dock = DockStyle.Fill;
+        resultsText.Location = new Point(3, 3);
         resultsText.Multiline = true;
         resultsText.Name = "resultsText";
         resultsText.ReadOnly = true;
         resultsText.ScrollBars = ScrollBars.Both;
-        resultsText.Size = new Size(711, 398);
+        resultsText.Size = new Size(697, 426);
         resultsText.TabIndex = 4;
         // 
         // statusStrip1
         // 
+        statusStrip1.BackColor = Color.White;
         statusStrip1.Items.AddRange(new ToolStripItem[] { systemStatus });
         statusStrip1.Location = new Point(0, 635);
-        statusStrip1.BackColor = Color.White;
         statusStrip1.Name = "statusStrip1";
         statusStrip1.Size = new Size(784, 26);
         statusStrip1.TabIndex = 5;
@@ -105,14 +113,56 @@ partial class Dashbouard
         systemStatus.Size = new Size(53, 21);
         systemStatus.Text = "Ready";
         // 
-        // resultsLablel
+        // httpSelection
         // 
-        resultsLablel.AutoSize = true;
-        resultsLablel.Location = new Point(25, 160);
-        resultsLablel.Name = "resultsLablel";
-        resultsLablel.Size = new Size(88, 32);
-        resultsLablel.TabIndex = 6;
-        resultsLablel.Text = "Results";
+        httpSelection.DropDownStyle = ComboBoxStyle.DropDownList;
+        httpSelection.FormattingEnabled = true;
+        httpSelection.Items.AddRange(new object[] { "GET", "POST" });
+        httpSelection.Location = new Point(84, 93);
+        httpSelection.Name = "httpSelection";
+        httpSelection.Size = new Size(110, 40);
+        httpSelection.TabIndex = 7;
+        // 
+        // callData
+        // 
+        callData.Controls.Add(bodyTab);
+        callData.Controls.Add(resultsTab);
+        callData.Location = new Point(25, 157);
+        callData.Name = "callData";
+        callData.SelectedIndex = 0;
+        callData.Size = new Size(711, 460);
+        callData.TabIndex = 8;
+        // 
+        // bodyTab
+        // 
+        bodyTab.Controls.Add(textBody);
+        bodyTab.Location = new Point(4, 41);
+        bodyTab.Name = "bodyTab";
+        bodyTab.Padding = new Padding(3);
+        bodyTab.Size = new Size(703, 415);
+        bodyTab.TabIndex = 0;
+        bodyTab.Text = "Body";
+        bodyTab.UseVisualStyleBackColor = true;
+        // 
+        // textBody
+        // 
+        textBody.Dock = DockStyle.Fill;
+        textBody.Location = new Point(3, 3);
+        textBody.Multiline = true;
+        textBody.Name = "textBody";
+        textBody.Size = new Size(697, 409);
+        textBody.TabIndex = 0;
+        // 
+        // resultsTab
+        // 
+        resultsTab.Controls.Add(resultsText);
+        resultsTab.Location = new Point(4, 24);
+        resultsTab.Name = "resultsTab";
+        resultsTab.Padding = new Padding(3);
+        resultsTab.Size = new Size(703, 432);
+        resultsTab.TabIndex = 1;
+        resultsTab.Text = "Results";
+        resultsTab.UseVisualStyleBackColor = true;
         // 
         // Dashbouard
         // 
@@ -120,9 +170,9 @@ partial class Dashbouard
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
         ClientSize = new Size(784, 661);
-        Controls.Add(resultsLablel);
+        Controls.Add(callData);
+        Controls.Add(httpSelection);
         Controls.Add(statusStrip1);
-        Controls.Add(resultsText);
         Controls.Add(callApi);
         Controls.Add(apiText);
         Controls.Add(apiLabel);
@@ -133,6 +183,11 @@ partial class Dashbouard
         Text = "Postman Clone by MarioBot";
         statusStrip1.ResumeLayout(false);
         statusStrip1.PerformLayout();
+        callData.ResumeLayout(false);
+        bodyTab.ResumeLayout(false);
+        bodyTab.PerformLayout();
+        resultsTab.ResumeLayout(false);
+        resultsTab.PerformLayout();
         ResumeLayout(false);
         PerformLayout();
     }
@@ -145,6 +200,10 @@ partial class Dashbouard
     private Button callApi;
     private TextBox resultsText;
     private StatusStrip statusStrip1;
-    private Label resultsLablel;
     private ToolStripStatusLabel systemStatus;
+    private ComboBox httpSelection;
+    private TabControl callData;
+    private TabPage bodyTab;
+    private TabPage resultsTab;
+    private TextBox textBody;
 }

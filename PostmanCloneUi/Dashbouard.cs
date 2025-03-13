@@ -9,6 +9,7 @@ public partial class Dashbouard : Form
     public Dashbouard()
     {
         InitializeComponent();
+        httpSelection.SelectedIndex = 0;
     }
 
     private async void callApi_ClickAsync(object sender, EventArgs e)
@@ -27,6 +28,8 @@ public partial class Dashbouard : Form
         try
         {
             resultsText.Text = await api.CallApi(apiText.Text);
+            callData.SelectedTab = resultsTab;
+
             systemStatus.Text = "Ready";
         }
         catch (Exception ex)
