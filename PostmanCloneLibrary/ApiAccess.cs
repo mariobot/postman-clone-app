@@ -14,7 +14,25 @@ public class ApiAccess : IApiAccess
 
     public async Task<string> CallApiAsync(string url, HttpContent? content = null, HttpAction action = HttpAction.GET, bool formatOutput = true)
     {
-        var response = await client.GetAsync(url);
+        HttpResponseMessage? response;
+
+        switch (action)
+        {
+            case HttpAction.GET:
+                response = await client.GetAsync(url);
+                break;
+            case HttpAction.POST:
+                response = await client.PostAsync(url, content);
+                break;
+            case HttpAction.PUT:
+                response = await client.PutAsync(url, content);
+                break;
+            case HttpAction.DELETE:
+                response = await client.DeleteAsync(url);
+                break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(action), action, null);
+        }
 
         if (response.IsSuccessStatusCode)
         {
