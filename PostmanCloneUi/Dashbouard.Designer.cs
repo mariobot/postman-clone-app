@@ -93,7 +93,7 @@ partial class Dashbouard
         resultsText.Name = "resultsText";
         resultsText.ReadOnly = true;
         resultsText.ScrollBars = ScrollBars.Both;
-        resultsText.Size = new Size(697, 426);
+        resultsText.Size = new Size(697, 409);
         resultsText.TabIndex = 4;
         // 
         // statusStrip1
@@ -117,7 +117,7 @@ partial class Dashbouard
         // 
         httpSelection.DropDownStyle = ComboBoxStyle.DropDownList;
         httpSelection.FormattingEnabled = true;
-        httpSelection.Items.AddRange(new object[] { "GET", "POST" });
+        httpSelection.Items.AddRange(new object[] { "GET", "POST", "PUT", "PATCH", "DELETE" });
         httpSelection.Location = new Point(84, 93);
         httpSelection.Name = "httpSelection";
         httpSelection.Size = new Size(110, 40);
@@ -156,10 +156,10 @@ partial class Dashbouard
         // resultsTab
         // 
         resultsTab.Controls.Add(resultsText);
-        resultsTab.Location = new Point(4, 24);
+        resultsTab.Location = new Point(4, 41);
         resultsTab.Name = "resultsTab";
         resultsTab.Padding = new Padding(3);
-        resultsTab.Size = new Size(703, 432);
+        resultsTab.Size = new Size(703, 415);
         resultsTab.TabIndex = 1;
         resultsTab.Text = "Results";
         resultsTab.UseVisualStyleBackColor = true;
