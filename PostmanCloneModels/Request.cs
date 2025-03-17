@@ -7,7 +7,7 @@ public class Request
     /// <summary>
     /// The URL of the API to call
     /// </summary>
-    public Uri? Url { get; set; }
+    public string? Url { get; set; }
 
     /// <summary>
     /// The body of the request

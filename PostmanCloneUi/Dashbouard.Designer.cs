@@ -172,6 +172,7 @@ partial class Dashbouard
         treeRequests.Name = "treeRequests";
         treeRequests.Size = new Size(237, 517);
         treeRequests.TabIndex = 9;
+        treeRequests.DoubleClick += treeRequests_DoubleClick;
         // 
         // Dashbouard
         // 
