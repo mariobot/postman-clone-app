@@ -10,6 +10,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PostmanCloneLibrary\PostmanCloneLibrary.csproj" />
+    <ProjectReference Include="..\PostmanCloneModels\PostmanCloneModels.csproj" />
   </ItemGroup>
 
 </Project>
