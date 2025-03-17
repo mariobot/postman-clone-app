@@ -40,6 +40,14 @@ public partial class Dashbouard : Form
             resultsTab.Focus();
 
             systemStatus.Text = "Ready";
+
+            TreeNode node = new TreeNode
+            {
+                Text = $"{action} {apiText.Text}",
+                ToolTipText = textBody.Text, 
+            };
+
+            treeRequests.Nodes.Add(node);
         }
         catch (Exception ex)
         {

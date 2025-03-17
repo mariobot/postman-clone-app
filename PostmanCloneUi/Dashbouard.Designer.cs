@@ -40,6 +40,7 @@ partial class Dashbouard
         bodyTab = new TabPage();
         textBody = new TextBox();
         resultsTab = new TabPage();
+        treeRequests = new TreeView();
         statusStrip1.SuspendLayout();
         callData.SuspendLayout();
         bodyTab.SuspendLayout();
@@ -50,7 +51,7 @@ partial class Dashbouard
         // 
         formHeader.AutoSize = true;
         formHeader.Font = new Font("Segoe UI", 26.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        formHeader.Location = new Point(25, 24);
+        formHeader.Location = new Point(374, 9);
         formHeader.Name = "formHeader";
         formHeader.Size = new Size(254, 47);
         formHeader.TabIndex = 0;
@@ -59,7 +60,7 @@ partial class Dashbouard
         // apiLabel
         // 
         apiLabel.AutoSize = true;
-        apiLabel.Location = new Point(25, 96);
+        apiLabel.Location = new Point(255, 94);
         apiLabel.Name = "apiLabel";
         apiLabel.Size = new Size(53, 32);
         apiLabel.TabIndex = 1;
@@ -68,14 +69,14 @@ partial class Dashbouard
         // apiText
         // 
         apiText.BorderStyle = BorderStyle.FixedSingle;
-        apiText.Location = new Point(200, 93);
+        apiText.Location = new Point(430, 91);
         apiText.Name = "apiText";
         apiText.Size = new Size(448, 39);
         apiText.TabIndex = 2;
         // 
         // callApi
         // 
-        callApi.Location = new Point(654, 93);
+        callApi.Location = new Point(884, 91);
         callApi.Name = "callApi";
         callApi.Size = new Size(82, 39);
         callApi.TabIndex = 3;
@@ -93,7 +94,7 @@ partial class Dashbouard
         resultsText.Name = "resultsText";
         resultsText.ReadOnly = true;
         resultsText.ScrollBars = ScrollBars.Both;
-        resultsText.Size = new Size(697, 409);
+        resultsText.Size = new Size(697, 444);
         resultsText.TabIndex = 4;
         // 
         // statusStrip1
@@ -102,7 +103,7 @@ partial class Dashbouard
         statusStrip1.Items.AddRange(new ToolStripItem[] { systemStatus });
         statusStrip1.Location = new Point(0, 635);
         statusStrip1.Name = "statusStrip1";
-        statusStrip1.Size = new Size(784, 26);
+        statusStrip1.Size = new Size(984, 26);
         statusStrip1.TabIndex = 5;
         statusStrip1.Text = "statusStrip1";
         // 
@@ -118,7 +119,7 @@ partial class Dashbouard
         httpSelection.DropDownStyle = ComboBoxStyle.DropDownList;
         httpSelection.FormattingEnabled = true;
         httpSelection.Items.AddRange(new object[] { "GET", "POST", "PUT", "PATCH", "DELETE" });
-        httpSelection.Location = new Point(84, 93);
+        httpSelection.Location = new Point(314, 91);
         httpSelection.Name = "httpSelection";
         httpSelection.Size = new Size(110, 40);
         httpSelection.TabIndex = 7;
@@ -127,10 +128,10 @@ partial class Dashbouard
         // 
         callData.Controls.Add(bodyTab);
         callData.Controls.Add(resultsTab);
-        callData.Location = new Point(25, 157);
+        callData.Location = new Point(255, 137);
         callData.Name = "callData";
         callData.SelectedIndex = 0;
-        callData.Size = new Size(711, 460);
+        callData.Size = new Size(711, 478);
         callData.TabIndex = 8;
         // 
         // bodyTab
@@ -139,7 +140,7 @@ partial class Dashbouard
         bodyTab.Location = new Point(4, 41);
         bodyTab.Name = "bodyTab";
         bodyTab.Padding = new Padding(3);
-        bodyTab.Size = new Size(703, 415);
+        bodyTab.Size = new Size(703, 433);
         bodyTab.TabIndex = 0;
         bodyTab.Text = "Body";
         bodyTab.UseVisualStyleBackColor = true;
@@ -150,26 +151,35 @@ partial class Dashbouard
         textBody.Location = new Point(3, 3);
         textBody.Multiline = true;
         textBody.Name = "textBody";
-        textBody.Size = new Size(697, 409);
+        textBody.Size = new Size(697, 427);
         textBody.TabIndex = 0;
         // 
         // resultsTab
         // 
         resultsTab.Controls.Add(resultsText);
-        resultsTab.Location = new Point(4, 41);
+        resultsTab.Location = new Point(4, 24);
         resultsTab.Name = "resultsTab";
         resultsTab.Padding = new Padding(3);
-        resultsTab.Size = new Size(703, 415);
+        resultsTab.Size = new Size(703, 450);
         resultsTab.TabIndex = 1;
         resultsTab.Text = "Results";
         resultsTab.UseVisualStyleBackColor = true;
+        // 
+        // treeRequests
+        // 
+        treeRequests.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        treeRequests.Location = new Point(12, 91);
+        treeRequests.Name = "treeRequests";
+        treeRequests.Size = new Size(237, 517);
+        treeRequests.TabIndex = 9;
         // 
         // Dashbouard
         // 
         AutoScaleDimensions = new SizeF(13F, 32F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(784, 661);
+        ClientSize = new Size(984, 661);
+        Controls.Add(treeRequests);
         Controls.Add(callData);
         Controls.Add(httpSelection);
         Controls.Add(statusStrip1);
@@ -206,4 +216,5 @@ partial class Dashbouard
     private TabPage bodyTab;
     private TabPage resultsTab;
     private TextBox textBody;
+    private TreeView treeRequests;
 }
