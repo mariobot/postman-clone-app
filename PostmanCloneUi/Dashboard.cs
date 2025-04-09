@@ -68,6 +68,14 @@ public partial class Dashboard : Form
         {
             Requests.Remove(Requests.First(x => x.Id == e.Request.Id));
             Requests.Add(e.Request);
+
+            TreeNode node = treeRequests.Nodes.Cast<TreeNode>().FirstOrDefault(x => x.Tag == e.Request);
+            if (node != null)
+            {
+                node.Text = $"{e.Request.Method} {e.Request.Title}";
+                node.ToolTipText = e.Request.Method;
+                node.Tag = e.Request;
+            }
         }
         else
         {

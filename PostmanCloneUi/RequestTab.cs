@@ -97,7 +97,7 @@ namespace PostmanCloneUi
             RequestItem.Url = apiText.Text;
             RequestItem.Body = textBody.Text;
             RequestItem.Method = actionSelected.ToString();
-            RequestItem.Title = $"{action} {apiText.Text}";
+            RequestItem.Title = apiText.Text;
 
             OnSaveItemClick(new CustomEventArgs(RequestItem));
         }
