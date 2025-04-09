@@ -10,12 +10,19 @@ public partial class Dashboard : Form
     public Dashboard()
     {
         InitializeComponent();
+        NewTab();
+    }
 
-        RequestTab requestTab = new RequestTab(null);
+    private void NewTab()
+    {
+        Guid index = Guid.NewGuid();
+        RequestTab requestTab = new(null, index);
         requestTab.tree_AddItem += tree_AddItem;
-        tabRequest.Controls.Add(requestTab);
-        tabRequest.Text = "New";
-        tabControl1.SelectedTab = tabRequest; 
+        TabPage page = new TabPage("New");
+        page.Name = index.ToString();
+        page.Controls.Add(requestTab);
+        tabControl1.TabPages.Add(page);
+        tabControl1.SelectedTab = page;
     }
 
     private void treeRequests_DoubleClick(object sender, EventArgs e)
@@ -27,11 +34,30 @@ public partial class Dashboard : Form
 
             if (request != null)
             {
-                RequestTab requestTab = new RequestTab(request);
-                requestTab.tree_AddItem += tree_AddItem;
-                tabRequest.Controls.Add(requestTab);
-                tabRequest.Text = request.Title;
-                tabControl1.SelectedTab = tabRequest;
+                Guid index = request.Id;
+                string tabName = index.ToString();
+
+                // Check if the tab already exists
+                TabPage? existingTab = tabControl1.TabPages.Cast<TabPage>().FirstOrDefault(tab => tab.Name == tabName);
+
+                if (existingTab != null)
+                {
+                    // Select the existing tab
+                    tabControl1.SelectedTab = existingTab;
+                }
+                else
+                {
+                    // Create a new tab
+                    RequestTab requestTab = new(request, request.Id);
+                    requestTab.tree_AddItem += tree_AddItem;
+                    TabPage page = new TabPage(request.Title)
+                    {
+                        Name = tabName
+                    };
+                    page.Controls.Add(requestTab);
+                    tabControl1.TabPages.Add(page);
+                    tabControl1.SelectedTab = page;
+                }
             }
         }
     }
@@ -48,7 +74,7 @@ public partial class Dashboard : Form
             TreeNode node = new TreeNode
             {
                 Text = $"{e.Request.Method} {e.Request.Title}",
-                ToolTipText = e.Request.Title,
+                ToolTipText = e.Request.Method,
                 Tag = e.Request,
             };
 
@@ -57,4 +83,6 @@ public partial class Dashboard : Form
             Requests.Add(e.Request);
         }
     }
+
+    private void btnNewTab_Click(object sender, EventArgs e) => NewTab();
 }

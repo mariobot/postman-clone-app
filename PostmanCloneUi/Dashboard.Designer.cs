@@ -32,16 +32,15 @@ partial class Dashboard
         systemStatus = new ToolStripStatusLabel();
         treeRequests = new TreeView();
         tabControl1 = new TabControl();
-        tabRequest = new TabPage();
+        btnNewTab = new Button();
         statusStrip1.SuspendLayout();
-        tabControl1.SuspendLayout();
         SuspendLayout();
         // 
         // statusStrip1
         // 
         statusStrip1.BackColor = Color.White;
         statusStrip1.Items.AddRange(new ToolStripItem[] { systemStatus });
-        statusStrip1.Location = new Point(0, 635);
+        statusStrip1.Location = new Point(0, 580);
         statusStrip1.Name = "statusStrip1";
         statusStrip1.Size = new Size(984, 26);
         statusStrip1.TabIndex = 5;
@@ -57,7 +56,7 @@ partial class Dashboard
         // treeRequests
         // 
         treeRequests.Font = new Font("Segoe UI", 8.25F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        treeRequests.Location = new Point(12, 91);
+        treeRequests.Location = new Point(12, 55);
         treeRequests.Name = "treeRequests";
         treeRequests.Size = new Size(237, 511);
         treeRequests.TabIndex = 9;
@@ -65,40 +64,40 @@ partial class Dashboard
         // 
         // tabControl1
         // 
-        tabControl1.Controls.Add(tabRequest);
         tabControl1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-        tabControl1.Location = new Point(267, 52);
+        tabControl1.Location = new Point(267, 16);
         tabControl1.Name = "tabControl1";
         tabControl1.SelectedIndex = 0;
         tabControl1.Size = new Size(700, 550);
         tabControl1.TabIndex = 10;
         // 
-        // tabRequest
+        // btnNewTab
         // 
-        tabRequest.Location = new Point(4, 24);
-        tabRequest.Name = "tabRequest";
-        tabRequest.Padding = new Padding(3);
-        tabRequest.Size = new Size(692, 522);
-        tabRequest.TabIndex = 0;
-        tabRequest.Text = "tabPage1";
-        tabRequest.UseVisualStyleBackColor = true;
+        btnNewTab.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+        btnNewTab.Location = new Point(194, 16);
+        btnNewTab.Name = "btnNewTab";
+        btnNewTab.Size = new Size(55, 23);
+        btnNewTab.TabIndex = 11;
+        btnNewTab.Text = "New";
+        btnNewTab.UseVisualStyleBackColor = true;
+        btnNewTab.Click += btnNewTab_Click;
         // 
-        // Dashbouard
+        // Dashboard
         // 
         AutoScaleDimensions = new SizeF(13F, 32F);
         AutoScaleMode = AutoScaleMode.Font;
         BackColor = Color.White;
-        ClientSize = new Size(984, 661);
+        ClientSize = new Size(984, 606);
+        Controls.Add(btnNewTab);
         Controls.Add(tabControl1);
         Controls.Add(treeRequests);
         Controls.Add(statusStrip1);
         Font = new Font("Segoe UI", 18F, FontStyle.Regular, GraphicsUnit.Point, 0);
         Margin = new Padding(6);
-        Name = "Dashbouard";
+        Name = "Dashboard";
         Text = "Postman Clone by MarioBot";
         statusStrip1.ResumeLayout(false);
         statusStrip1.PerformLayout();
-        tabControl1.ResumeLayout(false);
         ResumeLayout(false);
         PerformLayout();
     }
@@ -108,5 +107,5 @@ partial class Dashboard
     private ToolStripStatusLabel systemStatus;
     private TreeView treeRequests;
     private TabControl tabControl1;
-    private TabPage tabRequest;
+    private Button btnNewTab;
 }
