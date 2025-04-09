@@ -13,7 +13,7 @@ namespace PostmanCloneUi
         /// Constructor for the RequestTab
         /// </summary>
         /// <param name="request">The request.</param>
-        public RequestTab(Request? request)
+        public RequestTab(Request? request, Guid? index)
         {
             InitializeComponent();
             httpSelection.SelectedIndex = 0;
@@ -39,7 +39,7 @@ namespace PostmanCloneUi
             {
                 RequestItem = new Request
                 {
-                    Id = Guid.NewGuid(),
+                    Id = (Guid)index,
                     Url = string.Empty,
                     Body = string.Empty,
                     Method = string.Empty,
@@ -88,9 +88,15 @@ namespace PostmanCloneUi
 
         private void btnSave_Click(object sender, EventArgs e)
         {
+            if (Enum.TryParse(httpSelection.SelectedItem!.ToString(), out HttpAction actionSelected) == false)
+            {
+                systemStatus.Text = "Invalid HTTP Verb";
+                return;
+            }
+
             RequestItem.Url = apiText.Text;
             RequestItem.Body = textBody.Text;
-            RequestItem.Method = action.ToString();
+            RequestItem.Method = actionSelected.ToString();
             RequestItem.Title = $"{action} {apiText.Text}";
 
             OnSaveItemClick(new CustomEventArgs(RequestItem));

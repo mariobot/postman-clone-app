@@ -39,7 +39,6 @@
             apiLabel = new Label();
             btnGo = new Button();
             btnSave = new Button();
-            btnDelete = new Button();
             statusStrip1 = new StatusStrip();
             callData.SuspendLayout();
             bodyTab.SuspendLayout();
@@ -126,7 +125,7 @@
             apiText.Font = new Font("Segoe UI", 8F);
             apiText.Location = new Point(155, 16);
             apiText.Name = "apiText";
-            apiText.Size = new Size(369, 22);
+            apiText.Size = new Size(423, 22);
             apiText.TabIndex = 10;
             // 
             // apiLabel
@@ -142,9 +141,9 @@
             // btnGo
             // 
             btnGo.Font = new Font("Segoe UI", 8F);
-            btnGo.Location = new Point(530, 16);
+            btnGo.Location = new Point(584, 14);
             btnGo.Name = "btnGo";
-            btnGo.Size = new Size(33, 23);
+            btnGo.Size = new Size(45, 23);
             btnGo.TabIndex = 13;
             btnGo.Text = "Go";
             btnGo.UseVisualStyleBackColor = true;
@@ -152,22 +151,13 @@
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(566, 16);
+            btnSave.Location = new Point(635, 14);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(47, 23);
             btnSave.TabIndex = 14;
             btnSave.Text = "Save";
             btnSave.UseVisualStyleBackColor = true;
             btnSave.Click += btnSave_Click;
-            // 
-            // btnDelete
-            // 
-            btnDelete.Location = new Point(622, 16);
-            btnDelete.Name = "btnDelete";
-            btnDelete.Size = new Size(63, 23);
-            btnDelete.TabIndex = 15;
-            btnDelete.Text = "Delete";
-            btnDelete.UseVisualStyleBackColor = true;
             // 
             // statusStrip1
             // 
@@ -183,7 +173,6 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(statusStrip1);
-            Controls.Add(btnDelete);
             Controls.Add(btnSave);
             Controls.Add(btnGo);
             Controls.Add(callData);
@@ -215,7 +204,6 @@
         private Label apiLabel;
         private Button btnGo;
         private Button btnSave;
-        private Button btnDelete;
         private StatusStrip statusStrip1;
         private ToolStripStatusLabel systemStatus;
     }
